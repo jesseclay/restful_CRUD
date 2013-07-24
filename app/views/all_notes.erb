@@ -1,0 +1,11 @@
+<div class='container'>
+  <div class='row'>
+    <div class='span12'>
+      <% if @notes %>
+        <%notes.each do |note| %>
+          <%= note %>
+          <br>
+      <% end %>
+    </div>
+  </div>
+</div>
