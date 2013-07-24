@@ -6,6 +6,7 @@ $(document).ready(function() {
       method: this.method,
       data: $(this).serialize()
     }).done(function(msg) {
+      console.log(msg);
       $('#note_create_form')[0].reset();
       $('#createNote').modal('hide');
     });

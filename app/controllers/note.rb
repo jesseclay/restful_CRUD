@@ -1,10 +1,16 @@
 post '/create_note' do
-  p params
+  if @note = Note.create(:title => params[:title],
+                      :content => params[:content],
+                      :author => params[:author])
   content_type :json
-  {blah: "yay"}.to_json
+  {note: @note}.to_json
+  else
+    "uh-oh"
+  end
 end
 
 get '/all_notes' do
-  #@notes = Note.all
-  @notes = ["note1", "note2", "note3"]
+  @notes = Note.all
+  # @notes = ["note1", "note2", "note3"]
+  erb :all_notes
 end
