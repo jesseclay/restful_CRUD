@@ -17,6 +17,8 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'sinatra-partial'
+
 group :test do
   gem 'faker'
   gem 'rspec'

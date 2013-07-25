@@ -2,9 +2,21 @@
   <div class='row'>
     <div class='span12'>
       <% if @notes %>
+      <%counter = 1%>
         <%@notes.each do |note| %>
-          <%= note.content %>
-          <br>
+          <div class="display note">
+            title: <%=note.title%>
+            <br>
+            <%if note.author%>
+              author: <%=note.author%>
+            <%end%>
+            <br>
+            content :<%=note.content%>
+            <% note_id = "updateNote" + counter.to_s %>
+            <a href="#<%= note_id %>" data-toggle="modal">Update</a>
+            <%= partial(:_update_note, :locals => {note_id: note_id, note: note}) %>
+            <% counter += 1 %>
+          </div>
         <% end %>
       <% end %>
     </div>

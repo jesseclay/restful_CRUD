@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#note_create_form').on('submit', function(e){
+  $('#note_create_form').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       url: this.action,

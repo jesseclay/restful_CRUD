@@ -1,0 +1,36 @@
+<div id="<%= note_id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Update this note, jackass!</h3>
+  </div>
+  <form class="form-horizontal" id='note_create_form' action="/update_note" method="post">
+    <!-- Sets the form submittal to a put request for Sinatra -->
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="note_id" value="<%=note.id%>" >
+
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="inputTitle">Title</label>
+        <div class="controls">
+          <input type="text" name="title" id='inputTitle' value="<%=note.title%>" required>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="authorName">Author</label>
+        <div class="controls">
+          <input type="text" name="author" id='authorName' <%if note.author%>value="<%=note.author%>"<%end%>placeholder='Author (optional)'>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="noteText">Note</label>
+        <div class="controls">
+          <textarea class="textarea" id="noteText" rows="5" name="content" required><%=note.content%></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Update Note</button>
+    </div>
+  </form>
+</div>
