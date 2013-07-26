@@ -13,7 +13,6 @@ get '/notes' do
 end
 
 put '/notes/:id' do
-  p params
   note = Note.find_by_id(params[:id])
   note.title = params[:title]
   note.author = params[:author]

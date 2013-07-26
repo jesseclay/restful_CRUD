@@ -14,12 +14,10 @@ $(document).ready(function() {
   $('.delete_note').on('click', function(e) {
     e.preventDefault();
     console.log($(this).parent().remove());
-    note = this;
     $.ajax({
       type: 'delete',
       url: this.href
     }).done(function(msg) {
-      console.log(msg);
       console.log($('#note' + msg.note_id).parent());
     });
   });
