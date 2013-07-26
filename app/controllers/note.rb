@@ -1,4 +1,4 @@
-post '/create_note' do
+post '/notes' do
   if @note = Note.create(params)
   content_type :json
   {note: @note}.to_json
@@ -7,25 +7,24 @@ post '/create_note' do
   end
 end
 
-get '/all_notes' do
+get '/notes' do
   @notes = Note.all
-  # @notes = ["note1", "note2", "note3"]
-  erb :all_notes
+  erb :notes
 end
 
-put '/update_note' do
+put '/notes/:id' do
   p params
-  note = Note.find_by_id(params[:note_id])
+  note = Note.find_by_id(params[:id])
   note.title = params[:title]
   note.author = params[:author]
   note.content = params[:content]
   note.save
-  p note
+  redirect '/notes'
+end
 
-
-  p note
-  p note.id
-  # Note.update()
-  p params
-  p "herrow!"
+delete '/notes/:id' do
+  note = Note.find_by_id(params[:id])
+  note.destroy
+  content_type :json
+  {note_id: params[:id]}.to_json
 end
